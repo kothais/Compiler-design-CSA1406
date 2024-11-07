@@ -1,0 +1,26 @@
+%{
+
+
+int max_length = 0; // 
+%}
+
+%%
+[a-zA-Z]+ { 
+    int length = yyleng; 
+    if (length > max_length) {
+        max_length = length;
+    }
+}
+\n { /* Ignore newlines */ }
+. { /* Ignore any other characters */ }
+%%
+
+int yywrap() { return 1; }
+
+int main()
+{
+    printf("\nReading file to find the longest word length...\n");
+    yylex();
+    printf("Length of the longest word: %d\n", max_length);
+    return 0;
+}
