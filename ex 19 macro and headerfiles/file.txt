@@ -1,0 +1,24 @@
+// main.c
+#include "comment_counter.h"
+
+int comment_count = 0;  // Initialize the comment count variable
+
+int main() {
+    FILE *file = fopen(INPUT_FILE, "r");  // Use INPUT_FILE macro
+    if (!file) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    yyin = file;  // Set yyin to the input file for Lex
+    yylex();      // Start scanning using the Lex file
+    printf("Number of comment lines: %d\n", comment_count);
+    fclose(file);  // Close file after processing
+
+    return 0;
+}
+
+// Define yywrap to return 1, preventing linking issues
+int yywrap() {
+    return 1;
+}
