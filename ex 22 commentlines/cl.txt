@@ -1,0 +1,5 @@
+// This is a comment
+Code line
+// Another comment line
+Regular line
+/ Yet another comment with a single slash
