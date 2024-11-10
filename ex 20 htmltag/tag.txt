@@ -1,0 +1,10 @@
+<html>
+<head>
+    <title>Sample Page</title>
+</head>
+<body>
+    <div class="container">
+        <p>Welcome to the page!</p>
+    </div>
+</body>
+</html>
