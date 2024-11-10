@@ -1,0 +1,30 @@
+%{
+#include <stdio.h>
+
+int word_count = 0;
+int char_count = 0;
+int line_count = 0;
+%}
+
+%%
+
+\n              { line_count++; char_count++; }
+[ \t]+          { char_count += yyleng; }
+[a-zA-Z0-9]+    { word_count++; char_count += yyleng; }
+.               { char_count++; }
+
+%%
+
+int yywrap() {
+    return 1;
+}
+
+int main() {
+    printf("Enter text (Ctrl+D to end input):\n");
+yyin=fopen("c.txt", "r");
+    yylex();
+    printf("Lines: %d\n", line_count);
+    printf("Words: %d\n", word_count);
+    printf("Characters: %d\n", char_count);
+    return 0;
+}
